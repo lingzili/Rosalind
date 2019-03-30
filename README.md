@@ -1,1 +1,1 @@
-# Solutions for Rosalind questions
+# Solutions for Rosalind questions in R and Python
