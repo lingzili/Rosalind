@@ -1,0 +1,49 @@
+---
+title: "Nuclei ATAC-seq workflow"
+author: "LLi"
+date: "April 13, 2019"
+output: 
+  html_document: default
+  pdf_document:
+    fig_caption: yes
+    keep_tex: yes
+---
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 16px;
+  }
+
+h1.title {
+  font-size: 30px;
+  color: DarkRed;
+}
+
+h1 { /* Header 1 */
+  font-size: 20px;
+  color: DarkBlue;
+}
+
+code.r{ /* Code block */
+    font-size: 12px;
+}
+pre { /* Code block - determines code spacing between lines */
+    font-size: 14px;
+}
+</style>
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r results = 'hide', echo = FALSE}
+library(tidyverse)
+```
+
+# Introduction
+
+There will be two types of scripts (shell - run on linux terminal and R - run on R studio).
+
