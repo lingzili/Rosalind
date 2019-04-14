@@ -1,3 +1,6 @@
+# Rosalind ID: DNA
+# Title: Counting DNA Nucleotides
+
 # Open dna file
 dna <- readChar("~/Rosalind_Python/rosalind_dna.txt", nchars = file.info("~/Rosalind_Python/rosalind_dna.txt")$size)
 

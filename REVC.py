@@ -1,3 +1,6 @@
+# Rosalind ID: REVC
+# Title: Complementing a Strand of DNA
+
 # Open the data file
 with open("rosalind_revc.txt", "r") as dna_file:
 	dna = dna_file.readline().rstrip("\n") # Remove the newline

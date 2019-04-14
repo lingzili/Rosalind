@@ -1,3 +1,6 @@
+# Rosalind ID: DNA
+# Title: Counting DNA Nucleotides
+
 # Open the data file
 with open('rosalind_dna.txt') as dna_file:
 	dna = dna_file.read()

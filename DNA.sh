@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# Rosalind ID: DNA
+# Title: Counting DNA Nucleotides
+
 echo "Solutions to problem DNA in Rosalind"
 
 # Solution 1

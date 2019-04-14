@@ -1,3 +1,6 @@
+# Rosalind ID: RNA
+# Title: Transcribing DNA into RNA
+
 # Open dna file
 dna <- readChar("~/Rosalind_Python/rosalind_rna.txt", nchars = file.info("~/Rosalind_Python/rosalind_rna.txt")$size)
 dna

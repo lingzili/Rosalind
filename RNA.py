@@ -1,3 +1,6 @@
+# Rosalind ID: RNA
+# Title: Transcribing DNA into RNA
+
 # Find file path
 import os
 os.path.abspath('rosalind_rna.txt')
