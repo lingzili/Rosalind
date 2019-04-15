@@ -47,6 +47,9 @@ sapply(list_1, class)
 # Load library of full genome sequences for Mus musculus (Mouse) as provided by UCSC (mm10, Dec. 2011)
 library(BSgenome.Mmusculus.UCSC.mm10)
 
+# Chromosome names, seqlengths etc.
+seqinfo(BSgenome.Mmusculus.UCSC.mm10)
+
 # Inspect mouse genome
 genome <- BSgenome.Mmusculus.UCSC.mm10
 
@@ -141,6 +144,7 @@ ir2
 
 findOverlaps(ir1, ir2)
 countOverlaps(ir1, ir2)
+subsetByOverlaps(ir1, ir2)
 nearest(ir1, ir2)
 
 # GonomicRanges -----------------------------------------------------------
@@ -182,16 +186,61 @@ args(gaps)
 gr
 gaps(gr)
 
+# DataFrame (more versatile than data.frame)
+genes <- IRanges(start = 1:3, width = 2)
+df_genes <- DataFrame(genes = genes, index = rnorm(3))
+df_genes
 
+df_genes[1, 2]
+df_genes[1, 1]
 
+df_genes$index
 
+# Add DataFrame to GRanges
+values(gr) <- DataFrame(index = rnorm(3))
+gr
 
+values(gr)
 
+gr$index
 
+gr$index2 <- gr$index * 100
+gr
 
+# Convert data.frame to GRanges
+df <- data.frame(chr = c("chr1", "chr10", "chr2"), start = 1:3, end = 12:14, strand = "+", index = rnorm(3))
+df
 
+makeGRangesFromDataFrame(df, keep.extra.columns = TRUE)
 
+# Delete rows from GRanges
+seqlevels(gr, pruning.mode = "coarse") <- "chr10"
+gr
 
+# Keep rows from GRanges
+keepSeqlevels(gr, "chr1", pruning.mode = "coarse")
 
+# Rename chromosomes with NCBI styles
+newStyle <- mapSeqlevels(seqlevels(gr), "Ensembl")
+newStyle
 
+gr <- renameSeqlevels(gr, newStyle)
+gr
 
+# AnnotationHub
+library(AnnotationHub)
+
+# Create an AnnotationHub project
+ah <- AnnotationHub()
+
+# Search the hub for Genome Reference Consortium Mouse Build 38 (GRCm38)
+mcols(query(ah, c("GRCm38", "dna", "assembly", "2018")))[, c("title", "rdatadateadded", "sourceurl"), drop = FALSE]
+
+# Display information in Viewer panel
+ah_mouse <- query(ah, c("GRCm38", "dna", "assembly", "2018"))
+
+display(ah_mouse)
+
+# Download a file
+AH65840 <- ah[["AH65840"]]
+AH65840                
