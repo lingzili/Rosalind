@@ -16,8 +16,8 @@ body{ /* Normal  */
   }
 
 h1.title {
-  font-size: 30px;
-  color: DarkRed;
+  font-size: 24px;
+  color: Green;
 }
 
 h1 { /* Header 1 */
@@ -35,15 +35,55 @@ pre { /* Code block - determines code spacing between lines */
 
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-
-```{r results = 'hide', echo = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(tidyverse)
 ```
 
 # Introduction
 
 There will be two types of scripts (shell - run on linux terminal and R - run on R studio).
+
+# Installation
+Download [MobaXterm](https://mobaxterm.mobatek.net/) as the terminal for solexa2 server from its website.
+
+Programs, including R, [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/) and [Bowtie 2](http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml), are already installed in server.
+
+To check if a program is in the server, type in terminal:
+```{bash echo = TRUE, eval = FALSE}
+which fastqc
+```
+To check the program version, type in terminal:
+```{bash echo = TRUE, eval = FALSE}
+fastqc --version
+```
+To read documentation of the program in terminal:
+```{bash echo = TRUE, eval = FALSE}
+fastqc -h
+```
+To open R from terminal, type:
+```{bash echo = TRUE, eval = FALSE}
+R
+```
+
+# Download reference genome with pre-built indexes
+Genome indexing is a time- and memory-intense procedure, but it needs to be done only once for a given genome. For M. musculus, UCSC mm10 reference genome, the genome with its pre-built Bowtie 2 indexes are available to download from the *Indexes* panel on the right side of the [Bowtie 2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml) webpage. To download, type in terminal:
+```{bash echo = TRUE, eval = FALSE}
+wget ftp://ftp.ccb.jhu.edu/pub/data/bowtie2_indexes/mm10.zip
+```
+To unzip the zip file, type:
+```{bash echo = TRUE, eval = FALSE}
+unzip mm10.zip -d <your_destination_folder>
+```
+# Quality control
+FastQC is an application which runs quality checks to produce a report to quickly assess the overall quality of your run, and to spot any sequencing problem. Please watch the Youtube tutorial before use: [Using FastQC to check the quality of high throughput sequence](https://www.youtube.com/watch?v=bz93ReOv87Y)
+To run FastQC, type in terminal:
+```{bash echo = TRUE, eval = FALSE}
+fastqc <sample>.R1.fastq.gz
+```
+
+
+
+
+
+
 
